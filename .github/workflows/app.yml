@@ -41,7 +41,7 @@ jobs:
           
       - name: Rename final file
         run: |
-            echo "${{ env.FINAL_FILE_NAME }}
+            echo "${{ env.FINAL_FILE_NAME }}"
             cp "./dist/smassh${{ matrix.os == 'windows-latest' && '.exe' || '' }}" ./dist/${{ env.FINAL_FILE_NAME }}
 
       - name: Release
