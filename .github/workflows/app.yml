@@ -35,8 +35,11 @@ jobs:
           pyinstaller -F smassh.py --add-data="smassh/ui/css/:smassh/ui/css"
 
       - name: Set final file name
-        run: echo "FINAL_FILE_NAME=$(echo ${{ matrix.os }} | sed 's/-latest//;s/ubuntu/linux/;s/windows/windows/')-smassh${{ matrix.os == 'windows-latest' && '.exe' || '' }}" >> $GITHUB_ENV
-
+        run: |
+          echo "FINAL_FILE_NAME=$(echo ${{ matrix.os }} | sed 's/-latest//;s/ubuntu/linux/;s/windows/windows/')-smassh${{ matrix.os == 'windows-latest' && '.exe' || '' }}" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+          ls ./dist/
+          
       - name: Rename final file
         run: cp ./dist/smassh ./dist/${{ env.FINAL_FILE_NAME }}
 
