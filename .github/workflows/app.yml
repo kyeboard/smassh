@@ -40,7 +40,7 @@ jobs:
           ls ./dist/
           
       - name: Rename final file
-        run: cp ./dist/smassh ./dist/${{ env.FINAL_FILE_NAME }}
+        run: cp "./dist/smassh${{ matrix.os == 'windows-latest' && '.exe' || '' }}" ./dist/${{ env.FINAL_FILE_NAME }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
